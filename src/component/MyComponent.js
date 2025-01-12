@@ -3,6 +3,7 @@
 
 import React from 'react';
 import UserInfo from './UserInfo2';
+import DisplayInfor from './DisplayInfor';
 
 class MyComponent extends React.Component {
 
@@ -12,9 +13,9 @@ class MyComponent extends React.Component {
     render() {
         return (
             <div>
-                hello
-
                 <UserInfo />
+                <br/>
+                <DisplayInfor name="Ngo Gia Bao" age="20"></DisplayInfor>
             </div>
         );
     }
