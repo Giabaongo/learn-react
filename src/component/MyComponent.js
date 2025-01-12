@@ -12,7 +12,7 @@ class MyComponent extends React.Component {
     render() {
         return (
             <div>
-                hefdsf
+                hello
 
                 <UserInfo />
             </div>
