@@ -10,6 +10,7 @@ class MyComponent extends React.Component {
             <div>
                 My first component
                 {Math.random()}
+                
             </div>
         );
     }
