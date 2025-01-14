@@ -4,8 +4,13 @@ import logo from "./../logo.svg";
 
 class DisplayInfor extends React.Component {
 
-    state = {
-        isShowListUser: true
+
+    constructor(props) {
+        console.log('>>> call constructor: ')
+        super(props);
+        this.state = {
+            isShowListUser: true
+        }
     }
 
     handleShowHide = () => {
@@ -14,11 +19,26 @@ class DisplayInfor extends React.Component {
         })
     }
 
+    componentDidMount() {
+        console.log(">>> call me component did mount ")
+        setTimeout(() => {
+            document.title = "Home"
+        }, 3000);
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('>>> call me component did update', this.props, prevProps)
+        if(this.props.listUser.length === 5) {
+            alert('You got 5 user');
+        }
+
+    }
+
     render() {
 
         const { listUser } = this.props;
 
-        console.log(listUser)
+        console.log('>>>call me render')
         //props => properties (tai san) dung de chuyen du lieu
         //  tu component cha sang component con
         return (
@@ -33,7 +53,7 @@ class DisplayInfor extends React.Component {
                 {this.state.isShowListUser &&
                     <div>
                         {listUser.map((user) => {
-                            console.log(user)
+                            // console.log(user)
 
                             return (
                                 <div key={user.id} className={+user.age > 18 ? "green" : "red"}>
