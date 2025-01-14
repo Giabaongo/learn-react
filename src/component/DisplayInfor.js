@@ -1,5 +1,6 @@
 import React from "react";
 import "./DisplayInfo.scss";
+import logo from "./../logo.svg";
 
 class DisplayInfor extends React.Component {
 
@@ -22,11 +23,12 @@ class DisplayInfor extends React.Component {
         //  tu component cha sang component con
         return (
             <div className="display-info-contaniner">
+                <img src={logo}/>
                 <div>
                     <span onClick={() => { this.handleShowHide() }}>
-                        
-                        {this.state.isShowListUser ===true ? "Hide list users" : "Show list users"}
-                        </span>
+
+                        {this.state.isShowListUser === true ? "Hide list users" : "Show list users"}
+                    </span>
                 </div>
                 {this.state.isShowListUser &&
                     <div>
