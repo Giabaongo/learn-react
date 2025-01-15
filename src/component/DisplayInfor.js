@@ -83,10 +83,22 @@ const DisplayInfor = (props) => {
 
     const { listUser } = props;
 
+    const [isShowHideListUser, setIsShowHideListUser] = React.useState(true);
+
+    const handleShowHide = () => {
+        setIsShowHideListUser(!isShowHideListUser)
+    }
+
     return (
         <div className="display-info-contaniner">
 
-            {true &&
+            <div>
+                <span onClick={() => { handleShowHide() }}>
+                    {isShowHideListUser === true ? "Hide list users" : "Show list users"}
+                </span>
+            </div>
+
+            {isShowHideListUser &&
                 <div>
                     {listUser.map((user) => {
                         // console.log(user)
