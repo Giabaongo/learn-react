@@ -98,7 +98,7 @@ const DisplayInfor = (props) => {
                 </span>
             </div>
 
-            {isShowHideListUser &&
+            {isShowHideListUser  &&
                 <div>
                     {listUser.map((user) => {
                         // console.log(user)

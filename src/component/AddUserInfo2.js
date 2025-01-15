@@ -1,54 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 
-class AddUserInfo extends React.Component {
-    state = {
-        name: '',
-        address: 'HCM',
-        age: ''
-    };
+const AddUserInfo = (props) => {
+    // state = {
+    //     name: '',
+    //     address: 'HCM',
+    //     age: ''
+    // };
+
+    const [name, setName] = useState('');
+    const [address, setAddress] = useState('HCM');
+    const [age, setAge] = useState('');
 
 
-    handleOnChangeInput(event) {
-        this.setState({
-            name: event.target.value
-        })
+    const handleOnChangeInput = (event) => {
+        // this.setState({
+        //     name: event.target.value
+        // })
+        setName(event.target.value);
         // console.log(event,event.target.value)
     }
 
-    handleOnChangeAge(event) {
-        this.setState({
-            age: event.target.value
-        })
+    const handleOnChangeAge = (event) => {
+        // this.setState({
+        //     age: event.target.value
+        // })
+        setAge(event.target.value)
     }
 
-    handleOnSubmit = (event) => {
+    const handleOnSubmit = (event) => {
         event.preventDefault();
-        this.props.handleAddNewUser({
+        props.handleAddNewUser({
             id: Math.floor(Math.random() * 100 + 1) + "-random",
-            name: this.state.name,
-            age: this.state.age
+            name: name,
+            age: age
         });
+
+
     }
-    render() {
-        return (
-            <div className="display-info-contaniner">
-                My name is {this.state.name} and I'm {this.state.age}
-                <form onSubmit={(event) => { this.handleOnSubmit(event) }}>
-                    <label>Name: </label>
-                    <input
-                        value={this.state.name}
-                        type='text'
-                        onChange={(event) => { this.handleOnChangeInput(event) }} />
-                    <label>Age: </label>
-                    <input
-                        value={this.state.age}
-                        type='text'
-                        onChange={(event) => { this.handleOnChangeAge(event) }} />
-                    <button>submit</button>
-                </form>
-            </div>
-        );
-    }
+
+    return (
+        <div className="display-info-contaniner">
+            My name is {name} and I'm {age}
+            <form onSubmit={(event) => { handleOnSubmit(event) }}>
+                <label>Name: </label>
+                <input
+                    value={name}
+                    type='text'
+                    onChange={(event) => { handleOnChangeInput(event) }} />
+                <label>Age: </label>
+                <input
+                    value={age}
+                    type='text'
+                    onChange={(event) => { handleOnChangeAge(event) }} />
+                <button>submit</button>
+            </form>
+        </div>
+    );
+
 }
 
 export default AddUserInfo
