@@ -9,6 +9,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+.app-container {
+  .header-container {
+    .nav-link {
+      &.active {
+        color: #61dafb;
+      }
+    }
+  }
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
