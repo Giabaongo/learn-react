@@ -22,17 +22,18 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <Header />
-      <div>
-        Test link
-        <div>
-          <button>
-            <Link to="/user">go to user page</Link>
-          </button>
-          <button>
-            <Link to="/admin">go to admin page</Link>
-          </button>
+      <div className='header-container'>
+        <Header />
+      </div>
+
+      <div className='main-container'>
+        <div className='navsidebar-container'>
+
         </div>
+        <div className='app-container'>
+          <Outlet />
+        </div>
+
       </div>
     </div>
   );
