@@ -7,9 +7,10 @@ import {
     SidebarHeader,
     SidebarFooter,
     SidebarContent,
-} from 'react-pro-sidebar';import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
+} from 'react-pro-sidebar'; import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
 import sidebarBg from '../../assets/bg2.jpg'
-
+import { MdDashboard } from 'react-icons/md';
+import './SideBar.scss';
 
 const Sidebar = (props) => {
     const { image, collapsed, toggled, handleToggleSidebar } = props;
@@ -35,7 +36,7 @@ const Sidebar = (props) => {
                             whiteSpace: 'nowrap',
                         }}
                     >
-                        
+
                         <span >Gia Bao Ngo</span>
                     </div>
                 </SidebarHeader>
@@ -43,6 +44,8 @@ const Sidebar = (props) => {
                 <SidebarContent>
                     <Menu iconShape="circle">
                         <MenuItem
+                            icon={<MdDashboard />}
+                            // suffix={<span className="badge red">new</span>}
                         >
                             Dashboard
                         </MenuItem>
