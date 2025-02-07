@@ -4,4 +4,18 @@
     .pro-sidebar {
         height: 100vh
     }
+
+    .admin-content {
+        width: 100%;
+
+        .admin-header {
+            height: 40px;
+            border: solid 1px green;
+
+        }
+
+        .admin-main {
+            border: 1px solid red;
+        }
+    }
 }
