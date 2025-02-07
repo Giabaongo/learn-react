@@ -23,6 +23,7 @@ const ModelCreateUser = () => {
         } //else setPreviewImage('');
 
 
+        
         console.log(e.target.files[0]);
     }
 
