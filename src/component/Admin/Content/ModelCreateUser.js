@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import img1 from '../../../assets/bg2.jpg';
 import { FcPlus } from 'react-icons/fc';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 const ModelCreateUser = (props) => {
     const { show, setShow } = props;
 
@@ -31,19 +31,29 @@ const ModelCreateUser = (props) => {
         console.log(e.target.files[0]);
     }
 
-    const handleSubmitCreateUser = async() => {
-        //validate
+    const validateEmail = (email) => {
+        return String(email)
+          .toLowerCase()
+          .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          );
+      };
 
-        //call api
-        // let data = {
-        //     email: email,
-        //     password: password,
-        //     username: username,
-        //     role: role,
-        //     img: img
-        // }
-        // console.log("alert me")
-        // console.log(data);
+    const handleSubmitCreateUser = async() => {       
+        //validate
+        const isValidateEmail = validateEmail(email);
+        if(!isValidateEmail){
+            // alert('Email is invalid');
+            toast.error('Email is invalid');
+            return
+        }
+
+        const isValidatePassword = password.length >= 6;
+        if(!isValidatePassword){
+            // alert('Password must be at least 6 characters');
+            toast.error('Password must be at least 6 characters');
+            return
+        }
 
         const data = new FormData();
         data.append('password', password);
@@ -53,9 +63,13 @@ const ModelCreateUser = (props) => {
         data.append('img', img);
         
         let res = await axios.post('http://localhost:8081/api/v1/participant', data)
-        console.log(">> check res: ",res);
-        if(res.status === 200){
+        console.log(">> check res: ",res.data );
+        if(res.data && res.data.EC === 0){
+            toast.success('Create user success');
             handleClose();
+        }
+        if(res.data && res.data.EC !== 0){
+            toast.error(res.data.EM);
         }
     }
 
